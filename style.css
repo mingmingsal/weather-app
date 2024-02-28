@@ -19,6 +19,9 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: auto;
+    border: 10px solid black;
+    border-radius: 20px;
 }
 button {
     
@@ -53,8 +56,11 @@ h2{
     align-items: center;
 }
 .search input {
-    align-self: stretch;
+    align-self: center;
     font-size: 1.5rem;
+    height: 80%;
+    padding: 10px;
+    margin: 10px;
     border-radius: 20px;
     background-color: #ffe142;
     
@@ -83,7 +89,57 @@ h2{
 .tempSwitchers button:disabled{
     color: black;
 }
+.detailsContainer{
+    display: flex;
+    gap: 30px;
+    background-color: black;
+    border-radius: 30px;
+    justify-content: center;
+    padding: 20px;
+    width: 500px;
+    height: 200px;
+    margin: 20px;
+}
+.details {
+    justify-content: space-evenly;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+.detailsButtons {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.detailsButtons button {
+
+    border-color: transparent;
+    font-size: 2rem;
+    color: #ffe14250;
+    background-color: black;
+    
+}
+.detailsButtons button:disabled{
+    color: #ffe142;
+}
 .summary{
+    display: flex;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    width: 350px;
+    flex-direction: column;
+}
+.details div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #ffe142;
+}
+.details img {
+    margin: 20px 00px;
 }
 .date{
     background-color: black;
@@ -91,4 +147,9 @@ h2{
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+}
+.icon{
+    filter: invert(94%) sepia(32%) saturate(1870%) hue-rotate(322deg) brightness(107%) contrast(103%);
+
+
 }

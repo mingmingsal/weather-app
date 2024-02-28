@@ -14,6 +14,19 @@ const tempC = document.querySelectorAll(".tempC");
 const tempF = document.querySelectorAll(".tempF");
 const date = document.querySelector(".date");
 
+const visibility = document.querySelector(".visibility");
+const humid = document.querySelector(".humid");
+const wind = document.querySelector(".wind");
+
+const windm = document.querySelector(".windm");
+const windkm = document.querySelector(".windkm");
+
+const vism = document.querySelector(".vism");
+const viskm = document.querySelector(".viskm");
+
+const mi = document.getElementById("mi");
+const km = document.getElementById("km");
+
 const imgDisplay = document.querySelector(".picture");
 function userSearch() {
     searchCity(input.value);
@@ -27,6 +40,10 @@ async function searchCity(city) {
 
 tempCButton.addEventListener('click', () => switchTemps("C"));
 tempFButton.addEventListener('click', () => switchTemps("F"));
+
+mi.addEventListener('click', () => switchDist("mi"));
+km.addEventListener('click', () => switchDist("km"));
+
 function getCity(cityData) {
     return cityData.location.name;
 }
@@ -47,6 +64,19 @@ function getFeelsTemp(cityData) {
     const tempF = cityData.current.feelslike_f;
     return { tempC, tempF }
 }
+function getVisibility(cityData) {
+    const visM = cityData.current.vis_miles + " mi";
+    const visKM = cityData.current.vis_km + " km";
+    return { visKM, visM }
+}
+function getWind(cityData) {
+    const mi = cityData.current.wind_mph + " mi/h";
+    const km = cityData.current.wind_kph + " km/h";
+    return { mi, km }
+}
+function getHumidity(cityData) {
+    return cityData.current.humidity + "%";
+}
 function renderDOM(cityData) {
     h1.textContent = getCity(cityData);
     p.textContent = getCondition(cityData);
@@ -63,6 +93,11 @@ function renderDOM(cityData) {
         element.textContent = getFeelsTemp(cityData).tempC + "°";
     });
     date.textContent = getDate(cityData);
+    humid.textContent = getHumidity(cityData);
+    windm.textContent = getWind(cityData).mi;
+    windkm.textContent = getWind(cityData).km;
+    vism.textContent = getVisibility(cityData).visM;
+    viskm.textContent = getVisibility(cityData).visKM;
 }
 function switchTemps(temp) {
     if (temp == "C") {
@@ -86,6 +121,25 @@ function switchTemps(temp) {
         });
     }
 }
+function switchDist(temp) {
+    if (temp == "km") {
+        km.disabled = true;
+        mi.disabled = false;
+        windm.style.display = "none";
+        windkm.style.display = "inline";
+        vism.style.display = "none";
+        viskm.style.display = "inline";
+    }
+    else {
+        km.disabled = false;
+        mi.disabled = true;
+        windm.style.display = "inline";
+        windkm.style.display = "none";
+        vism.style.display = "inline";
+        viskm.style.display = "none";
+    }
+}
 switchTemps("C");
+switchDist("km");
 searchCity("Manila");
 //'https://api.giphy.com/v1/gifs/translate?api_key=TlWUAC5CXB41l6QbJdEHKZN6A5yaFeTn&s=cats'
