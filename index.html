@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ledger&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <div class="search">
+        <label for="searchCity">Input City:</label>
+        <input name="searchCity" type="text">
+        <button onclick="userSearch()"><img src="img/search-web.svg"></button>
+    </div>
+    <p class="date"></p>
+    <h1>City</h1>
     
+    <div class="temp">
+        <div class="tempResults">
+            <h2 class="tempC tempCResult">Temp</h2>
+            <h2 class="tempF tempFResult"></h2>
+        </div>
+        <div class="tempSwitchers">
+            <button id="tempC">C</button>
+            <button id="tempF" disabled>F</button>
+        </div>
+
+    </div>
+    <div class="summary">
+        <h3>Daily Summary</h3>
+    <p>It might be <span class="tempC tempCResult"></span><span class="tempF tempFResult"></span> but it feels like <span class="tempC tempCFeelsResult"></span><span class="tempF tempFFeelsResult"></span></p>
+    <p class ="condition">Condition</p>
+    </div>
 </body>
 <script src="index.js"></script>
+
 </html>
